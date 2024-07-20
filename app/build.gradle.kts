@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -26,6 +28,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,6 +38,14 @@ android {
     }
     buildFeatures{
         viewBinding = true
+    }
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.51.1")
     }
 }
 
@@ -54,4 +65,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
 
+    implementation ("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
+    annotationProcessor("com.google.dagger:hilt-compiler:2.51.1")
+}
+kapt {
+    correctErrorTypes = true
 }

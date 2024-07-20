@@ -7,13 +7,18 @@ import androidx.lifecycle.lifecycleScope
 import com.example.lesson16.data.CatFactRepository
 import com.example.lesson16.databinding.ActivityMainBinding
 import com.example.lesson16.domain.CatFactUseCase
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var mainViewModelFactory: MainViewModelFactory
+
     private val mainViewModel : MainViewModel by viewModels {
-        val rep = CatFactRepository()
-        val useCase = CatFactUseCase(rep)
-        MainViewModelFactory(useCase)
+        mainViewModelFactory
     }
 
     private lateinit var binding: ActivityMainBinding

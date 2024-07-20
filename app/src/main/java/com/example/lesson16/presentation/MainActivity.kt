@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.lesson16.data.CatFactRepository
 import com.example.lesson16.databinding.ActivityMainBinding
-import com.example.lesson16.domain.CatFactUseCase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
